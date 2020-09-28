@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf6ced4f05aa4a87bea9e1c2f43006e, type: 3}
+  m_Name: PlayerTankA
+  m_EditorClassIdentifier: 
+  maxLife: 20
+  mass: 3000
+  moveSpeed: 20
+  moveAcceleration: 50
+  vehicleName: Avenger
+  vehicleDescription: 'A very fast tank with
+
+    low attacking power
+
+    but it
+    will get you
+
+    where you need to
+
+    go in a hurry.'
+  speedValue: 10
+  armorValue: 3
+  attackValue: 2
+  pilotName: David
+  pilotAge: 28
+  pilotCountryFlag: {fileID: 21300000, guid: ecccccefbbff74b1b90838fc1cb0a8cd, type: 3}
