@@ -106,14 +106,14 @@ public class WalkerController : PlayerController
 
     protected override void HandleGround()
     {
-        isGrounded = cc.isGrounded;
+        //isGrounded = cc.isGrounded;
 
-        if (!isGrounded)
-        {
+        //if (!isGrounded)
+        //{
             airborneTime += Time.deltaTime;
-        }
-        else
-        {
+        //}
+        //else
+        //{
             if (airborneTime > 1f)
             {
                 landingAudiosource.PlayOneShot(landingClip);
@@ -123,14 +123,14 @@ public class WalkerController : PlayerController
             ccJetsAudiosource.Stop();
             ccJet.SetActive(false);
             cwJet.SetActive(false);
-        }
+        //}
 
-        animator.SetBool(IS_GROUNDED, isGrounded);
+        //animator.SetBool(IS_GROUNDED, isGrounded);
 
-        if (!isJetting && isGrounded && playerVelocity.y < 0)
-        {
-            playerVelocity.y = -0.01f;
-        }
+        //if (!isJetting && isGrounded && playerVelocity.y < 0)
+        //{
+        //    playerVelocity.y = -0.01f;
+        //}
     }
 
     private void RotatePlayer()
@@ -172,32 +172,32 @@ public class WalkerController : PlayerController
 
     protected override void MoveVehicle()
     {
-        if (isJetting)
-        {
-            forwardVelocity = Mathf.Clamp(forwardVelocity + leftStickInput.y * FLYING_FORWARD_ACCELERATION * Time.deltaTime, MAX_WALKING_SPEED_REVERSE, MAX_WALKING_SPEED_FORWARD);
+        //if (isJetting)
+        //{
+        //    forwardVelocity = Mathf.Clamp(forwardVelocity + leftStickInput.y * FLYING_FORWARD_ACCELERATION * Time.deltaTime, MAX_WALKING_SPEED_REVERSE, MAX_WALKING_SPEED_FORWARD);
 
-            playerVelocity = new Vector3(transform.forward.x * forwardVelocity * Time.deltaTime,
-                                         playerVelocity.y,
-                                         transform.forward.z * forwardVelocity * Time.deltaTime);
+        //    playerVelocity = new Vector3(transform.forward.x * forwardVelocity * Time.deltaTime,
+        //                                 playerVelocity.y,
+        //                                 transform.forward.z * forwardVelocity * Time.deltaTime);
 
-            playerVelocity.y += JETS_ACCELERATION * Time.deltaTime * Time.deltaTime;
-        }
-        else if (isGrounded)
-        {
-            forwardVelocity = Mathf.Clamp(forwardVelocity + leftStickInput.y * WALKING_FORWARD_ACCELERATION * Time.deltaTime, MAX_WALKING_SPEED_REVERSE, MAX_WALKING_SPEED_FORWARD);
+        //    playerVelocity.y += JETS_ACCELERATION * Time.deltaTime * Time.deltaTime;
+        //}
+        //else if (isGrounded)
+        //{
+        //    forwardVelocity = Mathf.Clamp(forwardVelocity + leftStickInput.y * WALKING_FORWARD_ACCELERATION * Time.deltaTime, MAX_WALKING_SPEED_REVERSE, MAX_WALKING_SPEED_FORWARD);
 
-            if (Mathf.Abs(forwardVelocity) < 1 && Mathf.Abs(leftStickInput.y) < 0.1f)
-            {
-                forwardVelocity = 0f;
-            }
+        //    if (Mathf.Abs(forwardVelocity) < 1 && Mathf.Abs(leftStickInput.y) < 0.1f)
+        //    {
+        //        forwardVelocity = 0f;
+        //    }
 
-            playerVelocity = new Vector3(transform.forward.x * forwardVelocity * Time.deltaTime,
-                                         playerVelocity.y,
-                                         transform.forward.z * forwardVelocity * Time.deltaTime);
-        }
+        //    playerVelocity = new Vector3(transform.forward.x * forwardVelocity * Time.deltaTime,
+        //                                 playerVelocity.y,
+        //                                 transform.forward.z * forwardVelocity * Time.deltaTime);
+        //}
 
-        playerVelocity.y += GRAVITY * Time.deltaTime * Time.deltaTime;
-        cc.Move(playerVelocity);
+        //playerVelocity.y += GRAVITY * Time.deltaTime * Time.deltaTime;
+        //cc.Move(playerVelocity);
     }
 
     protected override void MoveTurret()

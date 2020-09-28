@@ -32,23 +32,6 @@ Transform:
   m_Father: {fileID: 8163135696850051737}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3812920730556926669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7807297142362446773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87c0f5b366f934ec99725afe3853dd22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vehicleModel: {fileID: 5444874983776447015}
-  playerIconPrefab: {fileID: 5756494800049661802, guid: 67fd1ea4e41034787896d47c70e3e706,
-    type: 3}
-  pso: {fileID: 11400000, guid: 90f4a21067cb147a8a1ecd61cf6202b7, type: 2}
-  isNPC: 0
 --- !u!1 &5444874983776447015
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +221,25 @@ Transform:
   m_Father: {fileID: 8289433630228808128}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3812920730556926669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807297142362446773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c0f5b366f934ec99725afe3853dd22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vehicleModel: {fileID: 5444874983776447015}
+  playerIconPrefab: {fileID: 5756494800049661802, guid: 67fd1ea4e41034787896d47c70e3e706,
+    type: 3}
+  pso: {fileID: 11400000, guid: 90f4a21067cb147a8a1ecd61cf6202b7, type: 2}
+  playerVelocity: {x: 0, y: 0, z: 0}
+  targetPlayerVelocity: {x: 0, y: 0, z: 0}
+  isNPC: 0
 --- !u!1 &7857971954042401248
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +479,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1289476817115051067, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289476817115051067, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 3208864573540281569, guid: a5762b764150e4f3096b97e9fbf0b9eb,
         type: 3}
       propertyPath: tankModel

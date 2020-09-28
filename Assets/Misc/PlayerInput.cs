@@ -65,6 +65,22 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""LeftShoulder"",
+                    ""type"": ""Button"",
+                    ""id"": ""a32e561e-c4ca-449c-b689-eb215090f906"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RightShoulder"",
+                    ""type"": ""Button"",
+                    ""id"": ""04ef049a-da28-49a6-877c-d8c5e0a07434"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -287,6 +303,50 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Target"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ae6f80c-74d2-4fb9-85ac-2161ed85b638"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftShoulder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b12128a4-f241-4962-a9f3-fa772de5b19f"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LeftShoulder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b722948d-10e4-4c84-b720-1714db7940d8"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightShoulder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a916ec0-5f0b-4d89-97cc-734c8b5303a7"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RightShoulder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -362,6 +422,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Player_FireSecondary = m_Player.FindAction("FireSecondary", throwIfNotFound: true);
         m_Player_Camera = m_Player.FindAction("Camera", throwIfNotFound: true);
         m_Player_Target = m_Player.FindAction("Target", throwIfNotFound: true);
+        m_Player_LeftShoulder = m_Player.FindAction("LeftShoulder", throwIfNotFound: true);
+        m_Player_RightShoulder = m_Player.FindAction("RightShoulder", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -417,6 +479,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_FireSecondary;
     private readonly InputAction m_Player_Camera;
     private readonly InputAction m_Player_Target;
+    private readonly InputAction m_Player_LeftShoulder;
+    private readonly InputAction m_Player_RightShoulder;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -427,6 +491,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @FireSecondary => m_Wrapper.m_Player_FireSecondary;
         public InputAction @Camera => m_Wrapper.m_Player_Camera;
         public InputAction @Target => m_Wrapper.m_Player_Target;
+        public InputAction @LeftShoulder => m_Wrapper.m_Player_LeftShoulder;
+        public InputAction @RightShoulder => m_Wrapper.m_Player_RightShoulder;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -454,6 +520,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Target.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
                 @Target.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
                 @Target.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
+                @LeftShoulder.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftShoulder;
+                @LeftShoulder.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftShoulder;
+                @LeftShoulder.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftShoulder;
+                @RightShoulder.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightShoulder;
+                @RightShoulder.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightShoulder;
+                @RightShoulder.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightShoulder;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -476,6 +548,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Target.started += instance.OnTarget;
                 @Target.performed += instance.OnTarget;
                 @Target.canceled += instance.OnTarget;
+                @LeftShoulder.started += instance.OnLeftShoulder;
+                @LeftShoulder.performed += instance.OnLeftShoulder;
+                @LeftShoulder.canceled += instance.OnLeftShoulder;
+                @RightShoulder.started += instance.OnRightShoulder;
+                @RightShoulder.performed += instance.OnRightShoulder;
+                @RightShoulder.canceled += instance.OnRightShoulder;
             }
         }
     }
@@ -533,5 +611,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnFireSecondary(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
         void OnTarget(InputAction.CallbackContext context);
+        void OnLeftShoulder(InputAction.CallbackContext context);
+        void OnRightShoulder(InputAction.CallbackContext context);
     }
 }

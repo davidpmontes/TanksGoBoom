@@ -24,12 +24,12 @@ public class TankController : PlayerController
 
     protected override void HandleGround()
     {
-        isGrounded = cc.isGrounded;
+        //isGrounded = cc.isGrounded;
 
-        if (isGrounded && playerVelocity.y < 0)
-        {
-            playerVelocity.y = -0.01f;
-        }
+        //if (isGrounded && playerVelocity.y < 0)
+        //{
+        //    playerVelocity.y = -0.01f;
+        //}
     }
 
     protected override void MoveVehicle()
@@ -50,8 +50,10 @@ public class TankController : PlayerController
 
         body.transform.rotation = Quaternion.Slerp(body.transform.rotation, bodyRotation, 10 * Time.deltaTime);
 
-        playerVelocity.y += GRAVITY * Time.deltaTime * Time.deltaTime;
-        cc.Move(playerVelocity);
+        rb.AddForce(playerVelocity * 1000000, ForceMode.Force);
+        //playerVelocity.y += GRAVITY * Time.deltaTime * Time.deltaTime;
+        
+        //cc.Move(playerVelocity);
     }
 
     protected override void MoveTurret()

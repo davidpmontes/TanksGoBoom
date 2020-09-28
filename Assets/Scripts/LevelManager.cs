@@ -24,8 +24,6 @@ public class LevelManager : MonoBehaviour
         Utils.FindChildByNameRecursively(transform, "CameraSystems").GetComponent<CameraMovement>().Init();
         Utils.FindChildByNameRecursively(transform, "JukeBox").GetComponent<JukeBox>().Init();
         Utils.FindChildByNameRecursively(transform, "Canvas").GetComponent<CanvasManager>().Init();
-
-        SpawnPlayer(PlayerType.tank);
     }
 
     public void StartBackgroundMusic()

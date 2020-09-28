@@ -1,22 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2645893430697747698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462326751137126692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b8d5aec17d684b43afc1d6075cf6283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vehicleModel: {fileID: 7700756895744235289}
-  playerIconPrefab: {fileID: 5756494800049661802, guid: 67fd1ea4e41034787896d47c70e3e706,
-    type: 3}
-  pso: {fileID: 11400000, guid: 30a8ae3dc07cb49bf99ace0afb590956, type: 2}
-  isNPC: 0
 --- !u!1 &2469642564100019698
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,6 +30,23 @@ Transform:
   m_Father: {fileID: 800469735795639121}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2645893430697747698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462326751137126692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8d5aec17d684b43afc1d6075cf6283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vehicleModel: {fileID: 7700756895744235289}
+  playerIconPrefab: {fileID: 5756494800049661802, guid: 67fd1ea4e41034787896d47c70e3e706,
+    type: 3}
+  pso: {fileID: 11400000, guid: 30a8ae3dc07cb49bf99ace0afb590956, type: 2}
+  isNPC: 0
 --- !u!1001 &1490830846560520507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,6 +133,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8310239372488420736, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3.376563
+      objectReference: {fileID: 0}
+    - target: {fileID: -8310239372488420736, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.6763263
+      objectReference: {fileID: 0}
+    - target: {fileID: -8310239372488420736, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.11670804
+      objectReference: {fileID: 0}
+    - target: {fileID: -8310239372488420736, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 7.641643
+      objectReference: {fileID: 0}
+    - target: {fileID: -8310239372488420736, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5.795562
+      objectReference: {fileID: 0}
+    - target: {fileID: -8310239372488420736, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.000000834465
+      objectReference: {fileID: 0}
     - target: {fileID: 455994274036493777, guid: a5762b764150e4f3096b97e9fbf0b9eb,
         type: 3}
       propertyPath: m_LocalPosition.z

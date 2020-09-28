@@ -23,20 +23,20 @@ public class DroneController : PlayerController
 
     protected override void MoveVehicle()
     {
-        targetPlayerVelocity = Vector3.MoveTowards(targetPlayerVelocity,
-                                           new Vector3(leftStickInput.x,
-                                                       rightStickInput.y,
-                                                       leftStickInput.y) * pso.moveSpeed,
-                                           pso.moveAcceleration * Time.deltaTime);
+        float targetVerticalVelocity = 0.0f;
+        targetVerticalVelocity += -leftShoulderPressedInput * 0.5f + rightShoulderPressedInput * 0.5f;
 
-        playerVelocity = turret.transform.forward * targetPlayerVelocity.z * Time.deltaTime +
-                         turret.transform.right * targetPlayerVelocity.x * Time.deltaTime +
-                         Vector3.up * targetPlayerVelocity.y * Time.deltaTime;
+        targetPlayerVelocity = (turret.transform.forward * leftStickInput.y +
+                               Vector3.up * targetVerticalVelocity +
+                               turret.transform.right * leftStickInput.x) * pso.moveSpeed;
 
         body.transform.localRotation = Quaternion.AngleAxis(-leftStickInput.x * MAX_BODY_TILT, turret.transform.forward) *
                                        Quaternion.AngleAxis(leftStickInput.y * MAX_BODY_TILT, turret.transform.right);
 
-        cc.Move(playerVelocity);
+        var forceDirection = (targetPlayerVelocity - rb.velocity).normalized;
+        var velocityMagnitude = (targetPlayerVelocity - rb.velocity).magnitude;
+
+        rb.AddForce(forceDirection * 0.5f * rb.mass * velocityMagnitude * velocityMagnitude, ForceMode.Force);
     }
 
     protected override void MoveTurret()

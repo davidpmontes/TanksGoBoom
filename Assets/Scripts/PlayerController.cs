@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics;
+using UnityEngine;
 
 public abstract class PlayerController : MonoBehaviour, IDamageable
 {
@@ -17,19 +18,20 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
     protected AudioSource engineAudioSource;
     protected AudioSource turretAudioSource;
 
-    protected CharacterController cc;
+    //protected CharacterController cc;
+    protected Rigidbody rb;
     protected CanvasManager canvasManager;
 
     protected float life;
 
-    protected bool isGrounded;
+    //protected bool isGrounded;
 
     protected GameObject targetingReticleTarget;
 
     protected float targetYaw;
     protected float targetPitch;
-    protected Vector3 playerVelocity;
-    protected Vector3 targetPlayerVelocity;
+    public Vector3 playerVelocity;
+    public Vector3 targetPlayerVelocity;
 
     protected bool getNearestEnemyInput;
     protected bool changeCameraInput;
@@ -37,6 +39,9 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
     protected Vector2 rightStickInput;
     protected bool buttonNorthPressedInput;
     protected bool buttonNorthReleasedInput;
+    protected float leftShoulderPressedInput;
+    protected float rightShoulderPressedInput;
+
 
     protected Quaternion bodyRotation;
 
@@ -76,7 +81,8 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
         {
             GetInput = PlayerInput;
         }
-        cc = GetComponent<CharacterController>();
+        //cc = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         canvasManager = FindObjectOfType<CanvasManager>();
         targetingReticleTarget = Utils.FindChildByNameRecursively(transform, "TargetingReticleTarget");
 
@@ -131,9 +137,11 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
     public void SetStartingPosition(Vector3 worldPosition)
     {
         enabled = false;
-        cc.enabled = false;
+        rb.isKinematic = true;
+        //cc.enabled = false;
         transform.position = worldPosition;
-        cc.enabled = true;
+        //cc.enabled = true;
+        rb.isKinematic = false;
         enabled = true;
     }
 
@@ -227,6 +235,8 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
         //buttonNorthPressedInput = Gamepad.current.buttonNorth.wasPressedThisFrame;
         //buttonNorthReleasedInput = Gamepad.current.buttonNorth.wasReleasedThisFrame;
         //getNearestEnemyInput = Gamepad.current.buttonEast.wasPressedThisFrame;
+        leftShoulderPressedInput = playerInput.actions["LeftShoulder"].ReadValue<float>();
+        rightShoulderPressedInput = playerInput.actions["RightShoulder"].ReadValue<float>();
     }
 
     public void DamageReceived(Vector3 fromDirection, float power, float damage)
