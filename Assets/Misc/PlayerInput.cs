@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/PlayerInput.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Misc/PlayerInput.inputactions'
 
 using System;
 using System.Collections;
@@ -54,6 +54,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""name"": ""Camera"",
                     ""type"": ""Button"",
                     ""id"": ""815f6493-8c52-4656-931d-99991a79de97"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Target"",
+                    ""type"": ""Button"",
+                    ""id"": ""e210e63e-c0da-4dd0-87f2-abe7cf17dc5c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -257,6 +265,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42f9fbbe-2822-401b-9cc7-e0ec7f236ad0"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc62d96b-7a8a-4013-83c9-d5d8a3552571"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Target"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -331,6 +361,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Player_FirePrimary = m_Player.FindAction("FirePrimary", throwIfNotFound: true);
         m_Player_FireSecondary = m_Player.FindAction("FireSecondary", throwIfNotFound: true);
         m_Player_Camera = m_Player.FindAction("Camera", throwIfNotFound: true);
+        m_Player_Target = m_Player.FindAction("Target", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -385,6 +416,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_FirePrimary;
     private readonly InputAction m_Player_FireSecondary;
     private readonly InputAction m_Player_Camera;
+    private readonly InputAction m_Player_Target;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -394,6 +426,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @FirePrimary => m_Wrapper.m_Player_FirePrimary;
         public InputAction @FireSecondary => m_Wrapper.m_Player_FireSecondary;
         public InputAction @Camera => m_Wrapper.m_Player_Camera;
+        public InputAction @Target => m_Wrapper.m_Player_Target;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -418,6 +451,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Camera.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamera;
                 @Camera.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamera;
                 @Camera.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamera;
+                @Target.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
+                @Target.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
+                @Target.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTarget;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -437,6 +473,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Camera.started += instance.OnCamera;
                 @Camera.performed += instance.OnCamera;
                 @Camera.canceled += instance.OnCamera;
+                @Target.started += instance.OnTarget;
+                @Target.performed += instance.OnTarget;
+                @Target.canceled += instance.OnTarget;
             }
         }
     }
@@ -493,5 +532,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnFirePrimary(InputAction.CallbackContext context);
         void OnFireSecondary(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
+        void OnTarget(InputAction.CallbackContext context);
     }
 }
