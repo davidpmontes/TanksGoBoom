@@ -10,6 +10,11 @@ public class LevelManagerEditor : Editor
 
         LevelManager myTarget = (LevelManager)target;
 
+        if (GUILayout.Button("Spawn Helicopter"))
+        {
+            myTarget.SpawnPlayer(LevelManager.PlayerType.helicopter);
+        }
+
         if (GUILayout.Button("Spawn Drone"))
         {
             myTarget.SpawnPlayer(LevelManager.PlayerType.drone);

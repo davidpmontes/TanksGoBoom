@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class PlayerController : MonoBehaviour, IDamageable
 {
@@ -18,13 +17,10 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
     protected AudioSource engineAudioSource;
     protected AudioSource turretAudioSource;
 
-    //protected CharacterController cc;
     protected Rigidbody rb;
     protected CanvasManager canvasManager;
 
     protected float life;
-
-    //protected bool isGrounded;
 
     protected GameObject targetingReticleTarget;
 
@@ -42,14 +38,13 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
     protected float leftShoulderPressedInput;
     protected float rightShoulderPressedInput;
 
-
     protected Quaternion bodyRotation;
 
     protected const float GRAVITY = -9.81f;
     public bool isNPC;
 
     delegate void InputReceiver();
-    InputReceiver GetInput;
+    private InputReceiver GetInput;
     private TankAI tankAI;
 
     protected GameObject currRadarTarget;
@@ -81,7 +76,7 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
         {
             GetInput = PlayerInput;
         }
-        //cc = GetComponent<CharacterController>();
+
         rb = GetComponent<Rigidbody>();
         canvasManager = FindObjectOfType<CanvasManager>();
         targetingReticleTarget = Utils.FindChildByNameRecursively(transform, "TargetingReticleTarget");
@@ -100,21 +95,29 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
         var turretModel = vehicleModel.transform.GetChild(0).gameObject;
         turret.transform.localPosition = turretModel.transform.localPosition;
         turret.transform.localRotation = turretModel.transform.localRotation;
-        if (turretModel.TryGetComponent(out MeshFilter meshFilter))
+        if (turretModel.TryGetComponent(out MeshFilter meshFilterTurret))
         {
-            turret.GetComponent<MeshFilter>().mesh = meshFilter.mesh;
+            turret.GetComponent<MeshFilter>().mesh = meshFilterTurret.mesh;
         }
 
-        if (turretModel.TryGetComponent(out MeshRenderer meshRenderer))
+        if (turretModel.TryGetComponent(out MeshRenderer meshRendererTurret))
         {
-            turret.GetComponent<MeshRenderer>().sharedMaterial = meshRenderer.sharedMaterial;
+            turret.GetComponent<MeshRenderer>().sharedMaterial = meshRendererTurret.sharedMaterial;
         }
 
         var weaponsModel = turretModel.transform.GetChild(0).gameObject;
         weapons.transform.localPosition = weaponsModel.transform.localPosition;
         weapons.transform.localRotation = weaponsModel.transform.localRotation;
-        weapons.GetComponent<MeshFilter>().mesh = weaponsModel.GetComponent<MeshFilter>().mesh;
-        weapons.GetComponent<MeshRenderer>().sharedMaterial = weaponsModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        if (weaponsModel.TryGetComponent(out MeshFilter meshFilterWeapon))
+        {
+            weapons.GetComponent<MeshFilter>().mesh = meshFilterWeapon.mesh;
+        }
+        
+        if (weaponsModel.TryGetComponent(out MeshRenderer meshRendererWeapon))
+        {
+            weapons.GetComponent<MeshRenderer>().sharedMaterial = meshRendererWeapon.sharedMaterial;
+        }
 
         var playerIcon = Instantiate(playerIconPrefab, transform);
         playerIcon.transform.localPosition = Vector3.zero;
@@ -138,9 +141,7 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
     {
         enabled = false;
         rb.isKinematic = true;
-        //cc.enabled = false;
         transform.position = worldPosition;
-        //cc.enabled = true;
         rb.isKinematic = false;
         enabled = true;
     }
@@ -231,10 +232,6 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
     {
         leftStickInput = playerInput.actions["Move"].ReadValue<Vector2>();
         rightStickInput = playerInput.actions["Look"].ReadValue<Vector2>();
-        //changeCameraInput = Gamepad.current.selectButton.wasPressedThisFrame;
-        //buttonNorthPressedInput = Gamepad.current.buttonNorth.wasPressedThisFrame;
-        //buttonNorthReleasedInput = Gamepad.current.buttonNorth.wasReleasedThisFrame;
-        //getNearestEnemyInput = Gamepad.current.buttonEast.wasPressedThisFrame;
         leftShoulderPressedInput = playerInput.actions["LeftShoulder"].ReadValue<float>();
         rightShoulderPressedInput = playerInput.actions["RightShoulder"].ReadValue<float>();
     }

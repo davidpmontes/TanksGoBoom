@@ -6,11 +6,13 @@ public class LevelManager : MonoBehaviour
 
     public enum PlayerType
     {
+        helicopter,
         drone,
         tank,
         walker
     }
 
+    [SerializeField] private GameObject playerHelicopterPrefab;
     [SerializeField] private GameObject playerDronePrefab;
     [SerializeField] private GameObject playerTankPrefab;
     [SerializeField] private GameObject playerWalkerPrefab;
@@ -42,7 +44,9 @@ public class LevelManager : MonoBehaviour
         if (player1)
             Destroy(player1);
 
-        if (type == PlayerType.drone)
+        if (type == PlayerType.helicopter)
+            player1 = Instantiate(playerHelicopterPrefab);
+        else if (type == PlayerType.drone)
             player1 = Instantiate(playerDronePrefab);
         else if (type == PlayerType.tank)
             player1 = Instantiate(playerTankPrefab);
