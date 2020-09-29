@@ -59,14 +59,6 @@ public class CameraMovement : MonoBehaviour
     {
         transform.position = thirdPersonCameraPosition.transform.position;
         transform.rotation = thirdPersonCameraPosition.transform.rotation;
-
-        //transform.position = thirdPersonCameraPosition.transform.position; //Vector3.MoveTowards(transform.position, thirdPersonCameraPosition.transform.position, 10 * Time.deltaTime);
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, thirdPersonCameraPosition.transform.rotation, 50 * Time.deltaTime);
-
-        //transform.position = thirdPersonCameraPosition.transform.position;
-        //transform.rotation = //Quaternion.LookRotation(cameraLookAtPosition.transform.position - transform.position, Vector3.up);  // thirdPersonCameraPosition.transform.rotation;
-        //var targetRotation = externalTarget.transform.rotation;
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 0.05f * Quaternion.Angle(transform.rotation, targetRotation));
     }
 
     public void UpdateRadius(float speedPercent)
@@ -97,9 +89,7 @@ public class CameraMovement : MonoBehaviour
 
     public void RearView()
     {
-        //Camera.main.transform.localPosition = new Vector3(0, 20f, -65f);
-        Camera.main.transform.localPosition = new Vector3(0, 0, 0);
-        //Camera.main.transform.localPosition = new Vector3(0, 3.3f, -0.8f);
+        Camera.main.transform.localPosition = new Vector3(0, 7, -14.5f);
         Camera.main.transform.localRotation = Quaternion.Euler(10, 0, 0);
     }
 

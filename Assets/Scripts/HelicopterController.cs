@@ -3,9 +3,11 @@
 public class HelicopterController : PlayerController
 {
     private const float TURRET_YAW_SPEED = 115f;
-    private const float MAX_BODY_TILT = 15f;
+    private const float MAX_BODY_TILT = 30f;
 
     private const float MAX_ENGINE_PITCH = 0.5f;
+
+    [SerializeField] private GameObject tailRotor;
 
     public override void Init()
     {
@@ -22,24 +24,30 @@ public class HelicopterController : PlayerController
 
     protected override void MoveTurret()
     {
+        //targetYaw += rightStickInput.x * TURRET_YAW_SPEED * Time.deltaTime;
+        //if (targetYaw > 360) targetYaw -= 360;
+        //if (targetYaw < 0) targetYaw += 360;
+
+        //turret.transform.localRotation = Quaternion.Euler(0, targetYaw, 0);
     }
 
     protected override void MoveVehicle()
     {
-        float targetVerticalVelocity = 0.0f;
-        targetVerticalVelocity += -leftShoulderPressedInput * 0.5f + rightShoulderPressedInput * 0.5f;
+        var targetRotation = Quaternion.Euler(leftStickInput.y * MAX_BODY_TILT, 0, -rightStickInput.x * MAX_BODY_TILT);
 
-        targetPlayerVelocity = (turret.transform.forward * leftStickInput.y +
-                               Vector3.up * targetVerticalVelocity +
-                               turret.transform.right * leftStickInput.x) * pso.moveSpeed;
+        body.transform.localRotation = Quaternion.RotateTowards(body.transform.localRotation,
+                                                                targetRotation,
+                                                                Quaternion.Angle(body.transform.localRotation, targetRotation) * Time.fixedDeltaTime);
+        
+        rb.AddForceAtPosition(-rightStickInput.x * tailRotor.transform.right * 100000f, tailRotor.transform.position, ForceMode.Force);
 
-        body.transform.localRotation = Quaternion.AngleAxis(-leftStickInput.x * MAX_BODY_TILT, turret.transform.forward) *
-                                       Quaternion.AngleAxis(leftStickInput.y * MAX_BODY_TILT, turret.transform.right);
+        rb.drag = 1 + rb.velocity.magnitude / pso.maxSpeed;
+        rb.angularDrag = 1 + rb.angularVelocity.magnitude / pso.maxAngularSpeed;
 
-        var forceDirection = (targetPlayerVelocity - rb.velocity).normalized;
-        var velocityMagnitude = (targetPlayerVelocity - rb.velocity).magnitude;
-
-        rb.AddForce(forceDirection * 0.5f * rb.mass * velocityMagnitude * velocityMagnitude, ForceMode.Force);
+        rb.AddForce((turret.transform.forward * leftStickInput.y +
+                    Vector3.up * rightStickInput.y +
+                    turret.transform.right * leftStickInput.x) * 500000f,
+                    ForceMode.Force);
     }
 
     protected override void MoveWeapons()

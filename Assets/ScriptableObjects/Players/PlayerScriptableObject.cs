@@ -8,8 +8,9 @@ public class PlayerScriptableObject : ScriptableObject
 {
     public float maxLife;
     public float mass;
-    public float moveSpeed;
-    public float moveAcceleration;
+    public float maxSpeed;
+    public float maxAcceleration;
+    public float maxAngularSpeed;
 
     public string vehicleName;
 

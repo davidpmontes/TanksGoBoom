@@ -24,14 +24,17 @@ public class DroneController : PlayerController
     protected override void MoveVehicle()
     {
         float targetVerticalVelocity = 0.0f;
-        targetVerticalVelocity += -leftShoulderPressedInput * 0.5f + rightShoulderPressedInput * 0.5f;
+        targetVerticalVelocity += (rightShoulderPressedInput - leftShoulderPressedInput) * 0.5f;
 
         targetPlayerVelocity = (turret.transform.forward * leftStickInput.y +
                                Vector3.up * targetVerticalVelocity +
-                               turret.transform.right * leftStickInput.x) * pso.moveSpeed;
+                               turret.transform.right * leftStickInput.x) * pso.maxSpeed;
 
-        body.transform.localRotation = Quaternion.AngleAxis(-leftStickInput.x * MAX_BODY_TILT, turret.transform.forward) *
-                                       Quaternion.AngleAxis(leftStickInput.y * MAX_BODY_TILT, turret.transform.right);
+        //body.transform.localRotation = Quaternion.AngleAxis(-leftStickInput.x * MAX_BODY_TILT, turret.transform.forward) *
+        //                               Quaternion.AngleAxis(leftStickInput.y * MAX_BODY_TILT, turret.transform.right);
+        body.transform.localRotation = Quaternion.RotateTowards(body.transform.localRotation,
+                                                                Quaternion.AngleAxis(-leftStickInput.x * MAX_BODY_TILT, turret.transform.forward) *
+                                                                Quaternion.AngleAxis(leftStickInput.y * MAX_BODY_TILT, turret.transform.right), 50 * Time.fixedDeltaTime);
 
         var forceDirection = (targetPlayerVelocity - rb.velocity).normalized;
         var velocityMagnitude = (targetPlayerVelocity - rb.velocity).magnitude;
@@ -58,7 +61,7 @@ public class DroneController : PlayerController
 
     protected override void UpdateAudio()
     {
-        engineAudioSource.pitch = 1 + MAX_ENGINE_PITCH * (playerVelocity.magnitude / pso.moveSpeed);
+        engineAudioSource.pitch = 1 + MAX_ENGINE_PITCH * (playerVelocity.magnitude / pso.maxSpeed);
         turretAudioSource.volume = Mathf.Abs(rightStickInput.x);
     }
 }

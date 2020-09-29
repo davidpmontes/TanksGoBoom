@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLife: 10
   mass: 300
-  moveSpeed: 30
-  moveAcceleration: 65
+  maxSpeed: 300
+  maxAcceleration: 0
+  maxAngularSpeed: 2
   vehicleName: 
   vehicleDescription: 
   speedValue: 0

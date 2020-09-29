@@ -35,8 +35,8 @@ public class TankController : PlayerController
     protected override void MoveVehicle()
     {
         targetPlayerVelocity = Vector3.MoveTowards(targetPlayerVelocity,
-                                                   new Vector3(leftStickInput.x, 0, leftStickInput.y) * pso.moveSpeed,
-                                                   pso.moveAcceleration * Time.deltaTime);
+                                                   new Vector3(leftStickInput.x, 0, leftStickInput.y) * pso.maxSpeed,
+                                                   pso.maxAcceleration * Time.deltaTime);
 
         playerVelocity = turretRotateable.transform.forward * targetPlayerVelocity.z * Time.deltaTime +
                          turretRotateable.transform.right * targetPlayerVelocity.x * Time.deltaTime +
@@ -78,7 +78,7 @@ public class TankController : PlayerController
 
     protected override void UpdateAudio()
     {
-        engineAudioSource.pitch = 1 + MAX_ENGINE_PITCH * (playerVelocity.magnitude / pso.moveSpeed);
+        engineAudioSource.pitch = 1 + MAX_ENGINE_PITCH * (playerVelocity.magnitude / pso.maxSpeed);
         turretAudioSource.volume = Mathf.Abs(rightStickInput.x);
     }
 
