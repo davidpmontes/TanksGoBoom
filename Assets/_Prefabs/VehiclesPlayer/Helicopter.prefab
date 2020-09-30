@@ -576,26 +576,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &973466024619632791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6617129386082278268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78f32d8cdc2a0dd4685ca81de68e826c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vehicleModel: {fileID: 3903515387080034348}
-  playerIconPrefab: {fileID: 5756494800049661802, guid: 67fd1ea4e41034787896d47c70e3e706,
-    type: 3}
-  pso: {fileID: 11400000, guid: fbc2e7e9ef8a2884ea4e9059583b87f0, type: 2}
-  playerVelocity: {x: 0, y: 0, z: 0}
-  targetPlayerVelocity: {x: 0, y: 0, z: 0}
-  isNPC: 0
-  tailRotor: {fileID: 8107648286730020962}
 --- !u!1 &7084594027618021749
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +717,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &973466024619632791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6617129386082278268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f32d8cdc2a0dd4685ca81de68e826c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vehicleModel: {fileID: 3903515387080034348}
+  playerIconPrefab: {fileID: 5756494800049661802, guid: 67fd1ea4e41034787896d47c70e3e706,
+    type: 3}
+  pso: {fileID: 11400000, guid: fbc2e7e9ef8a2884ea4e9059583b87f0, type: 2}
+  playerVelocity: {x: 0, y: 0, z: 0}
+  targetPlayerVelocity: {x: 0, y: 0, z: 0}
+  isNPC: 0
+  tailRotor: {fileID: 8107648286730020962}
 --- !u!1 &8774463495280014229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,6 +1043,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Helicopter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234303617574430899, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267251298175113011, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e7b53c04c45d754448dfe8586919596a, type: 3}
+    - target: {fileID: 5267251298175113011, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267251298175113011, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 6017823164689138092, guid: a5762b764150e4f3096b97e9fbf0b9eb,
         type: 3}

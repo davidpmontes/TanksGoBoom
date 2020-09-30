@@ -216,7 +216,8 @@ public abstract class PlayerController : MonoBehaviour, IDamageable
 
     protected virtual void UpdateHUD()
     {
-        canvasManager.SetSpeedIndicator(Mathf.FloorToInt(playerVelocity.magnitude * 10f));
+        //canvasManager.SetSpeedIndicator(Mathf.FloorToInt(playerVelocity.magnitude * 10f));
+        canvasManager.SetSpeedIndicator(Mathf.FloorToInt(rb.velocity.magnitude));
         canvasManager.UpdateTargetingReticle(targetingReticleTarget.transform.position);
     }
 
