@@ -23,7 +23,8 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        Utils.FindChildByNameRecursively(transform, "CameraSystems").GetComponent<CameraMovement>().Init();
+        Utils.FindChildByNameRecursively(transform, "CameraMovement").GetComponent<CameraMovement>().Init();
+        Utils.FindChildByNameRecursively(transform, "CameraMap").GetComponent<CameraMap>().Init();
         Utils.FindChildByNameRecursively(transform, "JukeBox").GetComponent<JukeBox>().Init();
         Utils.FindChildByNameRecursively(transform, "Canvas").GetComponent<CanvasManager>().Init();
     }
@@ -59,5 +60,8 @@ public class LevelManager : MonoBehaviour
         CameraMovement.Instance.SetVehicle(player1);
         CameraMovement.Instance.SetThirdPersonCamera();
         CameraMovement.Instance.enabled = true;
+
+        CameraMap.Instance.SetVehicle(player1);
+        CameraMap.Instance.enabled = true;
     }
 }

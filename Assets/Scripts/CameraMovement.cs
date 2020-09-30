@@ -14,7 +14,6 @@ public class CameraMovement : MonoBehaviour
 
     [SerializeField] private GameObject vehicle = default;
     [SerializeField] private GameObject shake = default;
-    [SerializeField] private GameObject mapCamera = default;
 
     private GameObject firstPersonCameraPosition;
     private GameObject thirdPersonCameraPosition;
@@ -34,19 +33,11 @@ public class CameraMovement : MonoBehaviour
     private void LateUpdate()
     {
         moveVehicleCamera.Invoke();
-        MoveMapCamera();
     }
 
     public void SetVehicle(GameObject newVehicle)
     {
         vehicle = newVehicle;
-    }
-
-    private void MoveMapCamera()
-    {
-        mapCamera.transform.position = new Vector3(vehicle.transform.position.x,
-                                                   100,
-                                                   vehicle.transform.position.z);
     }
 
     private void MoveFirstPerson()

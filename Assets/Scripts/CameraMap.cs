@@ -1,18 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraMap : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static CameraMap Instance { get; private set; }
+
+    [SerializeField] private GameObject vehicle = default;
+
+    public void Init()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetVehicle(GameObject newVehicle)
     {
-        
+        vehicle = newVehicle;
+    }
+
+    private void LateUpdate()
+    {
+        MoveMapCamera();
+    }
+
+    private void MoveMapCamera()
+    {
+        transform.position = new Vector3(vehicle.transform.position.x,
+                                         200,
+                                         vehicle.transform.position.z);
+        transform.rotation = vehicle.transform.rotation;
     }
 }
