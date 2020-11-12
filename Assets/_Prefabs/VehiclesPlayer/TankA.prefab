@@ -90,6 +90,25 @@ Transform:
   m_Father: {fileID: 5984388796981992709}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7646652639982655148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5502340404666222448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b8d5aec17d684b43afc1d6075cf6283, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vehicleModel: {fileID: 720121359721923563}
+  playerIconPrefab: {fileID: 5756494800049661802, guid: 67fd1ea4e41034787896d47c70e3e706,
+    type: 3}
+  pso: {fileID: 11400000, guid: e699de4e057dc497480138c55a54416e, type: 2}
+  playerVelocity: {x: 0, y: 0, z: 0}
+  targetPlayerVelocity: {x: 0, y: 0, z: 0}
+  isNPC: 0
 --- !u!1 &6619865098348120699
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,23 +139,6 @@ Transform:
   m_Father: {fileID: 5984388796981992709}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7646652639982655148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5502340404666222448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b8d5aec17d684b43afc1d6075cf6283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vehicleModel: {fileID: 720121359721923563}
-  playerIconPrefab: {fileID: 5756494800049661802, guid: 67fd1ea4e41034787896d47c70e3e706,
-    type: 3}
-  pso: {fileID: 11400000, guid: e699de4e057dc497480138c55a54416e, type: 2}
-  isNPC: 0
 --- !u!1001 &720121359721825611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -427,6 +429,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017823164689138092, guid: a5762b764150e4f3096b97e9fbf0b9eb,
+        type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Gamepad
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3208864573540281570, guid: a5762b764150e4f3096b97e9fbf0b9eb, type: 3}

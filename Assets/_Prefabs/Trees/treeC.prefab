@@ -107,6 +107,16 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 7.371583
       objectReference: {fileID: 0}
+    - target: {fileID: 6530486115881245232, guid: d25503de6ddcd4a10ad45f6d7a694b56,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530486115881245232, guid: d25503de6ddcd4a10ad45f6d7a694b56,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8159817214062989656, guid: d25503de6ddcd4a10ad45f6d7a694b56,
         type: 3}
       propertyPath: m_Mesh

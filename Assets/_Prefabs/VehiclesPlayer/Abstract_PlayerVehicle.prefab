@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 1289476817115051067}
   - component: {fileID: -8310239372488420736}
   m_Layer: 13
-  m_Name: Abstract_PlayerTank
+  m_Name: Abstract_PlayerVehicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
